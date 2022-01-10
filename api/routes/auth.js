@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 //posting the user-creating data
 router.post("/register", async (req, res) => {
     try {
-        //to secure password
+        //to secure password we are using hashed password
         const salt = await bcrypt.genSalt(10);
         const hashedPass = await bcrypt.hash(req.body.password, salt);
         const newUser = new User({
