@@ -9,6 +9,12 @@ const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
 
+app.use((req, res, next) => {
+    res.setHeader("access-control-allow-origin", "*")
+    res.setHeader("access-control-allow-credentials", true)
+    res.setHeader("access-control-allow-methods", "GET,PUT, POST,DELETE,UPDATE")
+    next()
+})
 dotenv.config();
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
